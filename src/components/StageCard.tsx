@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -18,6 +19,7 @@ interface StageCardProps {
 }
 
 const StageCard = ({ 
+  id,
   title, 
   description, 
   image, 
@@ -85,10 +87,12 @@ const StageCard = ({
         </div>
 
         <Button 
+          asChild
           className="w-full gradient-primary hover:opacity-90 transition-smooth" 
-          disabled={!available}
         >
-          {available ? "Voir les détails" : "Voir les détails"}
+          <Link to={`/stage/${id}`}>
+            Voir les détails
+          </Link>
         </Button>
       </CardContent>
     </Card>
