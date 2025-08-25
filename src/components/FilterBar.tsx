@@ -29,60 +29,83 @@ const FilterBar = () => {
   };
 
   return (
-    <div className="bg-card rounded-lg p-6 shadow-custom-sm border">
-      {/* Search Bar */}
-      <div className="relative mb-4">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-        <Input
-          placeholder="Rechercher un stage..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="pl-10 bg-background"
-        />
-      </div>
+    <div className="w-full">
+      {/* Unified Search Bar - Airbnb Style */}
+      <div className="bg-card border border-border rounded-full shadow-lg p-2 flex items-center">
+        <div className="flex-1 grid grid-cols-1 sm:grid-cols-4 divide-x divide-border">
+          {/* Destination/Search */}
+          <div className="px-6 py-3 cursor-pointer hover:bg-muted/50 transition-colors rounded-l-full">
+            <div className="text-sm font-semibold text-foreground">Destination</div>
+            <Input
+              placeholder="Rechercher un stage..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="border-0 p-0 h-auto text-sm text-muted-foreground bg-transparent focus-visible:ring-0 placeholder:text-muted-foreground"
+            />
+          </div>
 
-      {/* Filters */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-        <Select value={selectedType} onValueChange={setSelectedType}>
-          <SelectTrigger>
-            <SelectValue placeholder="Type de stage" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="sport">Sport</SelectItem>
-            <SelectItem value="art">Art & Créativité</SelectItem>
-            <SelectItem value="science">Sciences</SelectItem>
-            <SelectItem value="langue">Langues</SelectItem>
-            <SelectItem value="nature">Nature & Aventure</SelectItem>
-          </SelectContent>
-        </Select>
+          {/* Type de stage */}
+          <div className="px-6 py-3">
+            <Select value={selectedType} onValueChange={setSelectedType}>
+              <SelectTrigger className="border-0 p-0 h-auto bg-transparent focus:ring-0 hover:bg-muted/50 transition-colors">
+                <div className="text-left">
+                  <div className="text-sm font-semibold text-foreground">Type</div>
+                  <SelectValue placeholder="Type de stage" className="text-sm text-muted-foreground" />
+                </div>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="sport">Sport</SelectItem>
+                <SelectItem value="art">Art & Créativité</SelectItem>
+                <SelectItem value="science">Sciences</SelectItem>
+                <SelectItem value="langue">Langues</SelectItem>
+                <SelectItem value="nature">Nature & Aventure</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
 
-        <Select value={selectedAge} onValueChange={setSelectedAge}>
-          <SelectTrigger>
-            <SelectValue placeholder="Âge" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="3-5">3-5 ans</SelectItem>
-            <SelectItem value="6-8">6-8 ans</SelectItem>
-            <SelectItem value="9-12">9-12 ans</SelectItem>
-            <SelectItem value="13-15">13-15 ans</SelectItem>
-          </SelectContent>
-        </Select>
+          {/* Âge */}
+          <div className="px-6 py-3">
+            <Select value={selectedAge} onValueChange={setSelectedAge}>
+              <SelectTrigger className="border-0 p-0 h-auto bg-transparent focus:ring-0 hover:bg-muted/50 transition-colors">
+                <div className="text-left">
+                  <div className="text-sm font-semibold text-foreground">Âge</div>
+                  <SelectValue placeholder="Âge de l'enfant" className="text-sm text-muted-foreground" />
+                </div>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="3-5">3-5 ans</SelectItem>
+                <SelectItem value="6-8">6-8 ans</SelectItem>
+                <SelectItem value="9-12">9-12 ans</SelectItem>
+                <SelectItem value="13-15">13-15 ans</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
 
-        <Select>
-          <SelectTrigger>
-            <SelectValue placeholder="Période" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="vacances-paques">Vacances de Pâques</SelectItem>
-            <SelectItem value="vacances-ete">Vacances d'été</SelectItem>
-            <SelectItem value="vacances-automne">Vacances d'automne</SelectItem>
-            <SelectItem value="weekends">Weekends</SelectItem>
-          </SelectContent>
-        </Select>
+          {/* Période */}
+          <div className="px-6 py-3">
+            <Select>
+              <SelectTrigger className="border-0 p-0 h-auto bg-transparent focus:ring-0 hover:bg-muted/50 transition-colors rounded-r-full">
+                <div className="text-left">
+                  <div className="text-sm font-semibold text-foreground">Période</div>
+                  <SelectValue placeholder="Quand ?" className="text-sm text-muted-foreground" />
+                </div>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="vacances-paques">Vacances de Pâques</SelectItem>
+                <SelectItem value="vacances-ete">Vacances d'été</SelectItem>
+                <SelectItem value="vacances-automne">Vacances d'automne</SelectItem>
+                <SelectItem value="weekends">Weekends</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
 
-        <Button variant="outline" className="flex items-center space-x-2">
-          <Filter className="h-4 w-4" />
-          <span>Plus de filtres</span>
+        {/* Search Button */}
+        <Button 
+          size="lg" 
+          className="rounded-full w-12 h-12 p-0 ml-2 bg-primary hover:bg-primary/90 shrink-0"
+        >
+          <Search className="h-4 w-4 text-primary-foreground" />
         </Button>
       </div>
 
