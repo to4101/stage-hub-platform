@@ -174,74 +174,6 @@ const StageDetail = () => {
               />
             </div>
 
-            {/* Sessions disponibles - Sélection pour inscription */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Calendar className="h-5 w-5" />
-                  <span>Sessions disponibles</span>
-                </CardTitle>
-                <p className="text-sm text-muted-foreground mt-2">
-                  Cliquez sur une session pour l'ajouter à votre inscription
-                </p>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {stageData.sessions.map((session) => (
-                  <div 
-                    key={session.id}
-                    onClick={() => session.spotsLeft > 0 && setSelectedSession(session.id)}
-                    className={`border rounded-lg p-4 transition-smooth cursor-pointer ${
-                      session.spotsLeft === 0 
-                        ? 'border-border bg-muted/50 cursor-not-allowed' 
-                        : selectedSession === session.id
-                        ? 'border-primary bg-primary/10 shadow-custom-sm'
-                        : 'border-border hover:border-primary/50 hover:shadow-custom-sm'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="space-y-2">
-                        <div className="flex items-center space-x-2">
-                          <div className={`w-4 h-4 rounded-full border-2 transition-smooth ${
-                            selectedSession === session.id 
-                              ? 'border-primary bg-primary' 
-                              : 'border-border'
-                          }`}>
-                            {selectedSession === session.id && (
-                              <div className="w-2 h-2 bg-primary-foreground rounded-full m-0.5"></div>
-                            )}
-                          </div>
-                          <div className="font-medium">
-                            Du {formatDate(session.startDate)} au {formatDate(session.endDate)}
-                          </div>
-                        </div>
-                        <div className="flex items-center space-x-4 text-sm text-muted-foreground ml-6">
-                          <div className="flex items-center space-x-1">
-                            <MapPin className="h-4 w-4" />
-                            <span>{session.location}</span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <Users className="h-4 w-4" />
-                            <span>{session.spotsLeft}/{session.capacity} places</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <div className="flex items-center space-x-1 font-semibold">
-                          <Euro className="h-4 w-4" />
-                          <span>{session.basePrice}€</span>
-                        </div>
-                        <Badge 
-                          variant={session.spotsLeft > 0 ? "default" : "destructive"}
-                          className={session.spotsLeft > 0 ? "bg-success text-success-foreground" : ""}
-                        >
-                          {session.spotsLeft > 0 ? `${session.spotsLeft} places` : "Complet"}
-                        </Badge>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
           </div>
 
           {/* Formulaire d'inscription */}
@@ -267,12 +199,73 @@ const StageDetail = () => {
                   </div>
                 )}
 
-                {!selectedSession && (
-                  <div className="bg-muted/50 border border-dashed rounded-lg p-4 text-center text-muted-foreground">
-                    <Calendar className="h-5 w-5 mx-auto mb-2" />
-                    <p className="text-sm">Veuillez sélectionner une session ci-dessus pour continuer</p>
+                {/* Sessions disponibles - Sélection pour inscription */}
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-2">
+                    <Calendar className="h-5 w-5" />
+                    <Label className="text-base font-medium">Sessions disponibles</Label>
                   </div>
-                )}
+                  <p className="text-sm text-muted-foreground">
+                    Cliquez sur une session pour l'ajouter à votre inscription
+                  </p>
+                  
+                  <div className="space-y-3">
+                    {stageData.sessions.map((session) => (
+                      <div 
+                        key={session.id}
+                        onClick={() => session.spotsLeft > 0 && setSelectedSession(session.id)}
+                        className={`border rounded-lg p-4 transition-smooth cursor-pointer ${
+                          session.spotsLeft === 0 
+                            ? 'border-border bg-muted/50 cursor-not-allowed' 
+                            : selectedSession === session.id
+                            ? 'border-primary bg-primary/10 shadow-custom-sm'
+                            : 'border-border hover:border-primary/50 hover:shadow-custom-sm'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="space-y-2">
+                            <div className="flex items-center space-x-2">
+                              <div className={`w-4 h-4 rounded-full border-2 transition-smooth ${
+                                selectedSession === session.id 
+                                  ? 'border-primary bg-primary' 
+                                  : 'border-border'
+                              }`}>
+                                {selectedSession === session.id && (
+                                  <div className="w-2 h-2 bg-primary-foreground rounded-full m-0.5"></div>
+                                )}
+                              </div>
+                              <div className="font-medium">
+                                Du {formatDate(session.startDate)} au {formatDate(session.endDate)}
+                              </div>
+                            </div>
+                            <div className="flex items-center space-x-4 text-sm text-muted-foreground ml-6">
+                              <div className="flex items-center space-x-1">
+                                <MapPin className="h-4 w-4" />
+                                <span>{session.location}</span>
+                              </div>
+                              <div className="flex items-center space-x-1">
+                                <Users className="h-4 w-4" />
+                                <span>{session.spotsLeft}/{session.capacity} places</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <div className="flex items-center space-x-1 font-semibold">
+                              <Euro className="h-4 w-4" />
+                              <span>{session.basePrice}€</span>
+                            </div>
+                            <Badge 
+                              variant={session.spotsLeft > 0 ? "default" : "destructive"}
+                              className={session.spotsLeft > 0 ? "bg-success text-success-foreground" : ""}
+                            >
+                              {session.spotsLeft > 0 ? `${session.spotsLeft} places` : "Complet"}
+                            </Badge>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
                 {/* Options tarifaires */}
                 <div className="space-y-4">
