@@ -29,7 +29,7 @@ const stageData = {
       id: "s1",
       startDate: "2024-07-08",
       endDate: "2024-07-12",
-      location: "Complexe sportif de Waterloo",
+      location: "Complexe sportif de Visé",
       capacity: 20,
       spotsLeft: 7,
       basePrice: 120
@@ -38,7 +38,7 @@ const stageData = {
       id: "s2", 
       startDate: "2024-07-15",
       endDate: "2024-07-19",
-      location: "Complexe sportif de Waterloo",
+      location: "Complexe sportif de Visé",
       capacity: 20,
       spotsLeft: 12,
       basePrice: 120
@@ -47,7 +47,7 @@ const stageData = {
       id: "s3",
       startDate: "2024-08-19",
       endDate: "2024-08-23", 
-      location: "Complexe sportif de Waterloo",
+      location: "Complexe sportif de Visé",
       capacity: 20,
       spotsLeft: 0,
       basePrice: 120
@@ -73,6 +73,13 @@ const stageData = {
       label: "Assurance annulation",
       description: "Protection en cas d'annulation de dernière minute",
       impact: 15,
+      required: false
+    },
+    {
+      id: "domicile-vise",
+      label: "Domicilié à Visé",
+      description: "Remise pour les résidents de Visé",
+      impact: -15,
       required: false
     }
   ]
