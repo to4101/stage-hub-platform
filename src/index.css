@@ -50,15 +50,17 @@
     --ring: 220 65% 50%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(220 65% 50%), hsl(260 65% 55%));
+    --gradient-primary: linear-gradient(135deg, hsl(220 65% 50%), hsl(260 65% 55%), hsl(280 60% 60%));
     --gradient-secondary: linear-gradient(135deg, hsl(220 15% 98%), hsl(220 15% 94%));
     --gradient-accent: linear-gradient(135deg, hsl(260 65% 92%), hsl(220 65% 95%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 65% 50% / 0.1), hsl(260 65% 55% / 0.05), hsl(280 60% 60% / 0.1));
 
     /* Shadows */
     --shadow-sm: 0 2px 4px hsl(220 65% 50% / 0.08);
     --shadow-md: 0 4px 12px hsl(220 65% 50% / 0.12);
     --shadow-lg: 0 8px 24px hsl(220 65% 50% / 0.16);
-    --shadow-xl: 0 12px 36px hsl(220 65% 50% / 0.20);
+    --shadow-xl: 0 16px 48px hsl(220 65% 50% / 0.24);
+    --shadow-glow: 0 0 40px hsl(220 65% 50% / 0.15);
 
     /* Typography */
     --font-size-xs: 0.75rem;
@@ -136,6 +138,10 @@
     background: var(--gradient-accent);
   }
   
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
   .shadow-custom-sm {
     box-shadow: var(--shadow-sm);
   }
@@ -152,12 +158,55 @@
     box-shadow: var(--shadow-xl);
   }
   
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
   .transition-smooth {
     transition: var(--transition-smooth);
   }
   
   .transition-fast {
     transition: var(--transition-fast);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+
+  .animate-scale-up {
+    animation: scaleUp 0.6s ease-out forwards;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
