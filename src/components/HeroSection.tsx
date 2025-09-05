@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Search, ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-stages.jpg";
+import FilterBar from "@/components/FilterBar";
 
 const HeroSection = () => {
   return (
@@ -10,28 +11,27 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
-            <div className="space-y-4">
+            <div className="space-y-6">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                Découvrez des{" "}
+                Trouvez le{" "}
                 <span className="gradient-primary bg-clip-text text-transparent">
-                  stages exceptionnels
+                  stage parfait
                 </span>{" "}
-                pour vos enfants
+                pour votre enfant
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Une plateforme moderne pour trouver et réserver les meilleurs stages 
-                de vacances. Sport, art, sciences, aventure... Trouvez l'activité parfaite 
-                pour votre enfant.
+                Sport, art, sciences, nature... Découvrez et réservez facilement 
+                les meilleurs stages de vacances en Belgique.
               </p>
             </div>
 
+            {/* Integrated Search Bar */}
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-custom-xl border border-white/20">
+              <FilterBar />
+            </div>
+
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="gradient-primary hover:opacity-90 transition-smooth group">
-                <Search className="mr-2 h-5 w-5" />
-                Explorer les stages
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-              <Button variant="outline" size="lg" className="border-primary/20 hover:bg-primary/5">
+              <Button variant="outline" size="lg" className="border-white/30 text-muted-foreground hover:bg-white/10">
                 Comment ça marche ?
               </Button>
             </div>

@@ -98,23 +98,6 @@ const Index = () => {
       <Header />
       
       <main>
-        {/* Search Section - Primary Focus */}
-        <section className="py-8 bg-background">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-8">
-              <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-                Trouvez le stage parfait
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Découvrez une sélection variée de stages de qualité pour tous les âges et tous les goûts
-              </p>
-            </div>
-            <div className="max-w-4xl mx-auto">
-              <FilterBar />
-            </div>
-          </div>
-        </section>
-
         <HeroSection />
         
         {/* Catalogue Section */}
